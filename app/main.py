@@ -1,22 +1,9 @@
 from app.models import Book
-from app.display import ConsoleDisplay, ReverseDisplay
-from app.printing import ConsolePrint, ReversePrint
-from app.serialization import JSONSerializer, XMLSerializer
+from app.processors import display_processors, print_processors, serializers
 
 
 def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
-    display_processors = {
-        "console": ConsoleDisplay(),
-        "reverse": ReverseDisplay()
-    }
-    print_processors = {
-        "console": ConsolePrint(),
-        "reverse": ReversePrint()
-    }
-    serializers = {
-        "json": JSONSerializer(),
-        "xml": XMLSerializer()
-    }
+
     result = None
     for cmd, method_type in commands:
         if cmd == "display" and method_type in display_processors:
