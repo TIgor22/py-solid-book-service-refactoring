@@ -18,7 +18,6 @@ def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
         "xml": XMLSerializer()
     }
     result = None
-
     for cmd, method_type in commands:
         if cmd == "display" and method_type in display_processors:
             display_processors[method_type].display(book)
